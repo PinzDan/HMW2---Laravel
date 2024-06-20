@@ -189,7 +189,7 @@ function fetchFilm() {
 - .then(data => { ... }): Se la risposta è OK, il metodo .then() successivo viene utilizzato per estrarre i dati JSON dalla risposta. data contiene i
 - .catch(error => { ... }): Questo blocco gestisce eventuali errori che possono verificarsi durante la richiesta o il parsing della risposta JSON. Se si verifica un errore, l'errore viene catturato e stampato nella console per il debug.
 
-###Esecuzione al Caricamento della Pagina
+### Esecuzione al Caricamento della Pagina
 
 javascript
 
@@ -201,7 +201,7 @@ Conclusione
 In sintesi, la funzione fetchFilm() effettua una chiamata GET a /api/films per ottenere i dati dei film, gestisce la risposta e gli eventuali errori con i metodi .then() e .catch(), e stampa i dati ottenuti nella console del browser. Questo approccio consente di integrare dinamicamente i dati ottenuti dall'API nella tua pagina web, migliorando l'esperienza utente con contenuti aggiornati e dinamici.
 
 
-#Definizione delle Route
+# Definizione delle Route
 ```
 Route::get('/', function () {
     return view('home');
@@ -218,9 +218,9 @@ Route::get('/', function () {
 
   - Interazione e Dinamicità: main.js gestisce l'interazione client-side come le diapositive dei film e le chiamate API per aggiornare dinamicamente il contenuto della home page.
 
-####Questo setup permette un'esperienza utente dinamica e reattiva sulla home page, integrando sia lato server (Laravel e Blade) che lato client (JavaScript).
+#### Questo setup permette un'esperienza utente dinamica e reattiva sulla home page, integrando sia lato server (Laravel e Blade) che lato client (JavaScript).
 
-#Gestione api.php per le rotte ed il FIlmController :dizzy_face: : 
+# Gestione api.php per le rotte ed il FIlmController :dizzy_face: : 
 
 ## film controller: 
 
