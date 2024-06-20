@@ -1,0 +1,244 @@
+@import url(assets/root.css);
+@import url(assets/style.css);
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+#main {
+    display: flex;
+}
+
+.main-container,
+.commenti {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--size-rem-2);
+}
+
+.main-container {
+    margin: var(--size-rem-2);
+    background-color: var(--second-color);
+}
+
+.commenti {
+    justify-content: space-between;
+    align-items: flex-start;
+
+}
+
+.film {
+    width: 100%;
+    padding: var(--size-rem-2)
+}
+
+.first-row {
+    display: flex;
+    color: black;
+    font-family: var(--card-font);
+}
+
+
+.first-row img {
+    width: 400px;
+    height: auto;
+    margin-right: var(--size-rem-2);
+}
+
+.details {
+    display: block;
+    font-family: Bebas Neue;
+}
+
+.componenti {
+    width: 30%;
+    height: 100%;
+    color: black;
+    font-family: var(--card-font);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-bottom-right-radius: var(--size-rem-2);
+    border-top-right-radius: var(--size-rem-2);
+}
+
+.componenti h2,
+.componenti h1 {
+    font-family: Bebas Neue;
+    text-align: center;
+}
+
+.componenti h2 {
+    font-size: 32px;
+}
+
+.title-section {
+    font-size: 45px;
+
+}
+
+.componenti p {
+    font-family: var(--card-font);
+}
+
+.cast p {
+    text-align: center;
+}
+
+
+
+
+
+
+.componenti>* {
+    margin: var(--size-rem-2);
+}
+
+.regista {
+    display: flex;
+
+}
+
+.regista img {
+    width: 200px;
+    height: auto;
+    margin: var(--size-rem-2);
+}
+
+
+.generalita {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.commenti {
+
+    display: flex;
+    color: var(--primary-color);
+    font-family: var(--card-font);
+
+}
+
+.container-commenti {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #222;
+    margin: 2rem, 2rem, 2rem 0;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin: var(--size-rem-2);
+}
+
+.user-comment {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid;
+    padding: 1.5rem;
+    box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.04) 0px 6px 6px -3px, rgba(14, 63, 126, 0.04) 0px 12px 12px -6px, rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
+
+}
+
+.user-comment h3 {
+    font-size: 16px;
+}
+
+.user-comment p {
+    font-size: 12px;
+}
+
+.user-comment span {
+    font-size: 10px;
+    float: right;
+}
+
+.commenta {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 60px;
+    padding: 2rem;
+    margin-left: auto;
+    background: whitesmoke;
+    border-radius: 5px;
+    margin: var(--size-rem-2);
+
+}
+
+.commenta textarea {
+    width: 100%;
+    height: 200px;
+    outline: none;
+    border: none;
+    resize: none;
+
+    font-family: var(--card-font);
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+.commenta textarea:focus {
+    border: 1px #005fcc solid;
+}
+
+textarea::-webkit-scrollbar {
+    width: 0px;
+}
+
+.commenta input[type='submit'] {
+    border-radius: 999px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    touch-action: manipulation;
+    word-break: break-word;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: var(--size-rem-1);
+    background-color: var(--background-color-4);
+    border-radius: 5px;
+    color: white;
+}
+
+.details h1 {
+    font-size: 120px;
+    margin: 0;
+
+}
+
+.details p {
+    font-size: 20px;
+    font-family: var(--card-font);
+}
+
+.trailer-container {
+    width: 100%;
+}
+
+.trailer-container iframe {
+    width: 100%;
+
+    height: 364px;
+}
+
+
+#reward h2 {
+    font-family: Bebas neue;
+    font-size: 32px;
+}
+
+.reward-details {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}

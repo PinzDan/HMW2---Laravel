@@ -1,0 +1,102 @@
+/* fonts */
+
+/* Poetsen */
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+
+/* Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poetsen+One&display=swap');
+
+/* Open Sans */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poetsen+One&display=swap');
+
+:root {
+    --navbar-height: 50px;
+    --num-of-film: 5;
+    --primary-color: white;
+    --second-color: whitesmoke;
+
+    /* %Value */
+    --value-2: 2%;
+
+    /* font */
+    --default-font: "Poetsen One";
+    --card-font: "Montserrat";
+    --form-font: "Open Sans";
+    /* background-color */
+    --background-color: #222;
+    --background-color-2: #1b263b;
+    --background-color-3: #283845;
+    --background-color-4: #5E5DF0;
+    /* primary palette */
+    --dark-slate-gray: #2F4C46ff;
+    --ebony: #5C6758ff;
+    --pakistan-green: #1B3E0Dff;
+    --dark-moss-green: #4D6210ff;
+    --kelly-green: #78BD2Eff;
+    --senape: #ffdd00;
+
+    --background-gradient-1: linear-gradient(to right, var(--kelly-green), var(--dark-slate-gray));
+    --background-gradient-2: linear-gradient(to right, var(--dark-slate-gray), var(--background-color-2));
+    --background-gradient-3: linear-gradient(to right, var(--ebony), var(--background-color));
+    --background-gradient-4: linear-gradient(to right, var(--kelly-green), var(--background-color));
+
+    --max-width-standard: 1250px;
+    /* size */
+    --size-rem-5: 5rem;
+    --size-rem-3: 3rem;
+    --size-rem-2: 2rem;
+    --size-rem-1: 1rem;
+    --size-rem-05: 0.5rem;
+    --size-rem-30: 30rem
+}
+
+/* Keyframes */
+
+@keyframes arrow_move {
+
+    0%,
+    100% {
+        transform: translateX(0);
+        /* Posizione iniziale */
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translateX(20px);
+        /* Posizione intermedia */
+        opacity: 1;
+    }
+
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+
+@keyframes scroll-text {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%)
+    }
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    background-color: #1b263b;
+}

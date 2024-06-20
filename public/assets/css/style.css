@@ -1,0 +1,771 @@
+@import url("root.css");
+
+
+
+/* +-+-+-+-+-+-+-+-+-+ */
+
+.content {
+    z-index: 1;
+    position: relative;
+}
+
+.frankie {
+    position: fixed;
+    z-index: 0;
+    width: 700px;
+}
+
+.frankie {
+    bottom: 0;
+    right: 0;
+
+}
+
+.logo-gray {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    z-index: -1;
+}
+
+.logo-gray img {
+    width: 100%;
+}
+
+
+/* gestione sezioni */
+.film-section {
+    width: 80%;
+    min-height: 500px;
+    padding: 5%;
+    margin: 5%;
+
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-color-3);
+    border-radius: var(--size-rem-3);
+}
+
+/* NAV BAR */
+
+#navbar {
+    display: flex;
+    background-color: var(--primary-color);
+    width: 100vw;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid var(--primary-color)smoke;
+    padding: 20px 0 20px 0;
+    transition: 1s;
+    box-shadow: rgb(255, 255, 255) 0px 20px 30px -10px;
+}
+
+
+#logo {
+    height: calc(var(--navbar-height) + 50px);
+    margin-right: auto;
+    background: url("../Logo/logo_noscritta.png") no-repeat;
+    background-size: contain;
+    width: 100px;
+
+}
+
+#menu-button {
+    margin-right: auto;
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: var(--navbar-height);
+
+}
+
+
+
+#menu-items {
+    position: absolute;
+    transform: translateY(-200%);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+}
+
+#menu-items a {
+    text-decoration: none;
+    font-family: var(--default-font);
+    color: var(--primary-color);
+    list-style-type: none;
+    padding: 20px;
+    background-color: var(--kelly-green);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+#menu-items a:hover {
+    background-color: var(--dark-moss-green);
+    transition: 0.3s;
+}
+
+#menu-items img {
+    width: 50px;
+    margin: 5px;
+}
+
+
+
+#image-button {
+    background: url('../icon/menu.png') no-repeat;
+    background-size: auto;
+    padding: 0px;
+    border: none;
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    background-size: contain;
+
+}
+
+#image-button:hover {
+    cursor: pointer;
+}
+
+
+
+/* cliccando il menu */
+
+.clicked-button {
+    background-image: url('../icon/menu_clicked.png') !important;
+
+    transition: 1s;
+    transform: rotate(360deg);
+}
+
+
+#menu-items.show {
+    display: block;
+    transform: translateY(0);
+    transition: 1s ease-in-out;
+    width: 100vw;
+    z-index: 2;
+}
+
+#navbar.show {
+    background-color: var(--background-color);
+    transition: 1s;
+    border: none;
+}
+
+#logo.show {
+    background: url("../Logo/logo_noscritta_clicked.png") no-repeat;
+    background-size: contain;
+}
+
+
+/* Sezione film */
+
+
+/* gestione container */
+
+
+#first-film,
+#second-film {
+    display: flex;
+    color: var(--primary-color);
+    margin-top: var(--value-2);
+    width: 50%;
+    transition: 1s;
+}
+
+#first-film:hover,
+#second-film:hover {
+    width: 100%;
+}
+
+#first-film {
+    flex-direction: row;
+}
+
+
+#second-film {
+    flex-direction: row-reverse;
+    margin-left: auto;
+}
+
+
+
+.left-container,
+.right-container {
+    min-height: 500px;
+    width: 50%;
+    display: flex;
+    position: relative;
+    transition: 1s;
+}
+
+.left-container {
+    margin-right: var(--value-2);
+    flex: 1;
+}
+
+.right-container {
+    margin-left: var(--value-2);
+    flex-direction: row-reverse;
+    flex: 1;
+    float: right;
+}
+
+.right-container:hover,
+.left-container:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    flex: 5;
+    background-color: var(--background-color-2);
+    display: flex;
+    flex-direction: column;
+}
+
+
+.description-hover {
+    width: 95%;
+    transition: 1s;
+    padding: 20px;
+}
+
+/* -++-+-+-+-+-+-+- */
+
+/* gestione poster */
+
+
+.scroll {
+    width: 100%;
+    display: flex;
+}
+
+.left-poster {
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.right-poster {
+    width: 100%;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+/* +-+-+-+-+-+-+-+- */
+
+/* gestione descrizioni */
+
+.description {
+    font-family: var(--default-font);
+    width: 100%;
+    display: block;
+    padding: 20px;
+    opacity: 1;
+
+}
+
+.description:hover {
+    transition: opacity 1s;
+    opacity: 0.5;
+}
+
+
+
+/* +-+-+-+-+-+-+- */
+
+
+/* trailer */
+
+.trailer {
+    display: none;
+    width: 100%;
+    height: 300px;
+    margin: auto;
+}
+
+.trailer.show {
+    display: flex !important;
+    align-content: center;
+    justify-content: center
+}
+
+/* gestione freccia */
+
+
+
+.left-container .arrow,
+.right-container .arrow {
+
+    position: absolute;
+    transition: transform 1s, opacity 1s;
+    opacity: 1;
+    animation: arrow_move 2s infinite;
+    bottom: 10%;
+}
+
+.left-container .arrow {
+    right: var(--value-2);
+}
+
+.right-container .arrow {
+    left: var(--value-2);
+}
+
+
+.description-clicked .arrow {
+    display: none;
+}
+
+/* primary */
+#primary {
+
+    margin-top: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.title-week {
+    color: var(--primary-color);
+    font-size: 32px;
+    font-family: var(--default-font);
+    border-radius: var(--size-rem-3);
+    background: var(--background-gradient-1);
+    overflow: hidden;
+    white-space: nowrap;
+    /* impedisce al testo di andare a capo */
+    position: relative;
+}
+
+.scroll-text {
+    display: inline-block;
+    animation: scroll-text 10s linear infinite;
+    display: flex;
+    align-content: center;
+    align-items: center;
+
+}
+
+
+/* image of the week */
+
+#image-of-week {
+    width: 80%;
+    min-width: 700px;
+    height: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.5);
+    border-radius: var(--size-rem-2);
+    background-color: var(--background-color-3);
+}
+
+
+.slideshow {
+    max-width: var(--max-width-standard);
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin: auto;
+    margin-top: 5%;
+    cursor: pointer;
+    display: flex;
+    padding: var(--size-rem-3);
+}
+
+.photo {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--size-rem-2);
+}
+
+.caption {
+    font-size: 32px;
+    border-bottom-right-radius: var(--size-rem-2);
+    border-bottom-left-radius: var(--size-rem-2);
+
+}
+
+.dots {
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+}
+
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 1s ease;
+}
+
+.active {
+    background-color: #717171;
+}
+
+.slide {
+    animation-name: fade;
+    animation-duration: 2s;
+}
+
+
+/*final section */
+
+.final-section {
+    width: 100%;
+    height: auto;
+    background-color: var(--background-color-2) rgba(0, 0, 0, 0.2);
+    box-shadow: rgba(161, 161, 170, 0.25) 0px 30px 60px -12px inset, rgba(161, 161, 170, 0.3) 0px 18px 36px -18px inset;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: var(--size-rem-3);
+}
+
+
+
+
+.overlay::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    border-top-left-radius: var(--size-rem-2);
+    color: white;
+
+    background-image: url("../icon/open_in_new_24dp_FILL0_wght400_GRAD0_opsz24.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    padding: var(--size-rem-1);
+    font-family: var(--card-font);
+    transition: 1s;
+    display: block;
+    overflow: auto;
+
+}
+
+.slideshow:hover .overlay::after {
+    background-color: rgba(0, 0, 0, 0.5);
+    background-image: none;
+    width: 100%;
+    height: 70%;
+    font-size: var(--size-rem-1);
+    content: attr(data-element-title) "\A" attr(data-description);
+    /* \A -> carattere nuova riga" */
+    white-space: pre-line;
+}
+
+
+
+
+
+/* FOOTER */
+.footer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+
+    font-family: var(--default-font);
+
+}
+
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-container {
+    position: relative;
+    width: 20%;
+    padding: 50px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.footer-container h3 {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--primary-color);
+}
+
+.footer-container ul li {
+    margin: 5px;
+    list-style-type: none;
+}
+
+.footer-container ul li a {
+    font-size: 1em;
+    color: var(--primary-color);
+    text-decoration: none;
+
+}
+
+.footer-container ul li a:hover {
+    border-bottom: 2px solid var(--primary-color);
+    transition: all .3s;
+    cursor: url('../icon/icons8-laser-sword-color-96.png'), auto;
+}
+
+
+.social li {
+    display: inline;
+}
+
+.social img {
+    width: 30px;
+    height: 30px;
+}
+
+.social img:hover {
+    transform: scale(1.5);
+    transition: 1s;
+}
+
+/* RESPONSIVE */
+
+
+@media screen and (max-width:950px) {
+
+    .left-container,
+    .right-container {
+        display: block;
+        width: 100%;
+    }
+
+    .left-poster,
+    .right-poster {
+        height: 300px;
+    }
+
+
+
+    .footer-container {
+        width: 50%;
+        padding: 30px 10px;
+    }
+
+
+}
+
+@media screen and (max-width:500px) {
+    .footer-container {
+        width: 100%;
+        padding: 25px 10px;
+    }
+}
+
+
+
+/* Login&sSignUp page */
+
+
+#main-container-login {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+
+#signup-container {
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--size-rem-5);
+    background: var(--background-gradient-4);
+    font-family: var(--form-font);
+
+    width: 100%;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+
+
+}
+
+#signup-container input,
+#signup-container label {
+    font-size: var(--size-rem-2);
+    font-family: var(--form-font);
+    font-size: var(--size-rem-2);
+    font-weight: lighter;
+
+}
+
+
+
+#signup-container input,
+#google {
+    margin-top: var(--size-rem-2);
+    margin-bottom: var(--size-rem-2);
+    padding: var(--size-rem-1);
+    border-radius: var(--size-rem-1);
+    border: 0px;
+    width: var(--size-rem-30);
+    display: block;
+    outline: none;
+
+
+}
+
+#signup-container input:focus:invalid:required {
+    border: 3px solid var(--vermilion);
+    place-content: "Username non inserito";
+}
+
+#signup-container input:focus:valid:required {
+    border: 2px solid var(--background-color);
+}
+
+#error {
+    color: var(--senape);
+    padding: var(--size-rem-1);
+}
+
+
+.signup-form,
+.login-form {
+    display: block;
+    margin-top: 5%;
+
+}
+
+
+
+.hidden {
+    display: none;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.translate_sign {
+    display: none;
+    transition: 1s ease-in-out
+}
+
+.translate_log {
+    display: block;
+    transition: 1s ease-in-out;
+
+}
+
+.signup-form label,
+.login-form label {
+    display: block;
+}
+
+.eyes {
+    cursor: pointer;
+
+}
+
+
+
+#sign-submit {
+    text-align: center;
+    cursor: pointer;
+    background: var(--ebony);
+    color: white;
+    position: relative;
+
+}
+
+#sign-submit:hover {
+    background: var(--background-gradient-3);
+
+}
+
+
+.button-form {
+    width: 100%;
+    display: flex;
+}
+
+#signup-btn,
+#login-btn {
+    color: var(--primary-color);
+    font-weight: lighter;
+    font-size: var(--size-rem-2);
+    background: none;
+
+    outline: none;
+    border: none;
+    padding: var(--size-rem-05);
+    opacity: 0.5;
+}
+
+.clicked {
+    transition: 1s;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border-bottom: 2px solid white !important;
+}
+
+.paragrafo-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: var(--default-font);
+    font-size: var(--size-rem-1);
+    background-color: var(--background-color);
+}
+
+.paragrafo-login p {
+    margin: 5% 20%;
+}
+
+#google {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    text-decoration: none;
+    font-family: var(--form-font);
+    color: var(--background-color);
+}
+
+#google::after {
+    content: "effettua il login con Google";
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#google:hover::after {
+    cursor: pointer;
+    opacity: 1;
+}
