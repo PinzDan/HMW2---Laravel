@@ -1,7 +1,6 @@
 @import url(root.css);
 
 
-
 #archive-title {
     display: flex;
     justify-content: center;
@@ -47,7 +46,8 @@
 
 #filter,
 #select-genre,
-#next {
+#next,
+#back {
     background: var(--background-color-4);
     box-shadow: var(--background-color-4) 0 10px 20px -10px;
     width: 30%;
@@ -166,11 +166,18 @@
     width: 100%;
     height: auto;
     max-width: var(--max-width-standard);
-    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 
+}
+
+.show {
+    display: flex;
+}
+
+.obscure {
+    display: none;
 }
 
 
@@ -183,7 +190,7 @@
     box-shadow: rgba(161, 161, 170, 0.25) 0px 30px 60px -12px inset, rgba(161, 161, 170, 0.3) 0px 18px 36px -18px inset;
     border-radius: var(--size-rem-05);
     position: relative;
-    /* per gli overlay */
+    max-width: 300px;
 }
 
 .film-card img {
@@ -257,15 +264,21 @@
     padding: 2rem;
 }
 
-.next-page {
-    width: auto;
+.next-page,
+.back-page {
+
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 
 }
 
-#next {
-    width: 100% !important;
+#next,
+#back {
+    width: 150px
+}
+
+#back {
+    display: none;
 }
 
 #list-line {
@@ -329,4 +342,14 @@
     flex-direction: column;
     width: 100%;
     color: var(--primary-color);
+}
+
+
+@media (max-width:1900px) {
+    .film-card-row {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        transition: 1s ease-in-out;
+        justify-content: flex-start;
+    }
 }

@@ -7,8 +7,7 @@ const rating = urlParams.get('rating');
 
 function fetchRegista() {
 
-    // Effettua la richiesta fetch utilizzando il registaId ottenuto
-    fetch(`/fetch-regista?regista_id=${registaId}`)
+    fetch(`api/fetch-regista/` + registaId)
         .then(response => {
 
             if (!response.ok) {
@@ -18,13 +17,13 @@ function fetchRegista() {
             return response.json();
         })
         .then(data => {
-            if (data.length > 0) {
-                const regista = data[0];
-                document.getElementById('regista-nome').textContent = regista.nome + " " + regista.cognome;
-                document.getElementById('regista-biografia').textContent = regista.biografia;
-                document.querySelector('.regista-photo').querySelector("img").src = regista.foto;
 
-            }
+            console.log(data)
+            const regista = data;
+            document.getElementById('regista-nome').textContent = regista.nome + " " + regista.cognome;
+            document.getElementById('regista-biografia').textContent = regista.biografia;
+            document.querySelector('.regista-photo').querySelector("img").src = regista.foto;
+
         })
         .catch(error => console.error('Errore:', error));
 }
@@ -33,8 +32,8 @@ function fetchRegista() {
 function countAwardsByFilmId() {
 
 
-    // Esegui la chiamata per ottenere il conteggio dei premi raggruppati per nome del premio per il film con filmId
-    fetch(`/api/films/awards-count?id=${filmId}`)
+
+    fetch(`/api/films/awards-count/` + filmId)
         .then(response => {
             if (!response.ok) {
                 throw new Error("Errore " + response.statusText);
@@ -161,25 +160,25 @@ function fillStar() {
 }
 
 
-let clicked = false;
+
 function clickStar() {
     const starClass = document.querySelectorAll(".star-svg");
     starClass.forEach(element => {
         element.addEventListener("click", () => {
-            if (!clicked) {
-                const index = parseInt(element.getAttribute("data-index"), 10) + 1;
+
+            const index = parseInt(element.getAttribute("data-index"), 10) + 1;
 
 
-                fetch(`/api/vote?filmID=${filmId}&rating=${index}`)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error("Errore " + response.statusText);
-                        }
+            fetch(`/api/vote?filmID=${filmId}&rating=${index}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Errore " + response.statusText);
+                    }
 
-                        return response.json();
-                    })
+                    return response.json();
+                })
 
-            }
+
 
         });
     });

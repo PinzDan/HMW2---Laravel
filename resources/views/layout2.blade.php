@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+@php
+    $user_id = session('user_id');
+    $logged = session('logged')
+@endphp
+
+<script>
+    let logged = @json($logged);
+</script>
 
 <head>
     <meta charset="UTF-8">

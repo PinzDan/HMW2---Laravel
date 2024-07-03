@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout2')
 
 
 @section('title', 'film')
@@ -21,20 +21,18 @@
     <div class="main-container">
         <div class="film">
             <div class="first-row">
-                @php
-                    echo "<div>";
-                    echo "<img src='$locandina'>";
-                    echo "<div id='reward'>";
-                    echo "<h2>Premi</h2>";
-                    echo "</div>";
-                    echo "</div>";
-                @endphp
 
-
+                <div>
+                    <img src = {{ $locandina }}>
+                    <div id = 'reward'>
+                        <h2>Premi</h2>
+                    </div>
+                </div>
+               
                 <div class="details">
-                    @php
-                        echo "<h1>$title</h1>";
-                    @endphp
+                   
+                        <h1>{{ $title }}</h1>
+                    
                     <div class="star">
 
                     </div>
@@ -45,12 +43,13 @@
                         </svg>
                         <span>Vote now!</span>
                     </div>
-                    @php
-                        echo "<p>$trama</p>";
-                    @endphp
+                    
+                        <p>{{$trama}}</p>
+                    
                     <div class=" trailer-container">
-                        @php echo $trailer; @endphp
-
+                        @php
+                            echo $trailer;
+                        @endphp
                     </div>
 
 
@@ -77,7 +76,7 @@
             <h2>Cast</h2>
             <div class="cast">
 
-                <p>{{ request()->input('cast') }}...</p>
+                <p>{{ $cast }}...</p>
 
             </div>
 
@@ -94,9 +93,8 @@
 
     <form class="commenta" method="POST" action="{{ route('send-comment') }}">
         @csrf
-        <input type="hidden" name="film_id" value="@php echo $id; @endphp ">
-        <textarea id="commento" name="commento" placeholder=" @php echo $placeholder; @endphp " @php echo $disabled;
-            @endphp></textarea>
+        <input type="hidden" name="film_id" value="{{ $id;}} ">
+        <textarea id="commento" name="commento" placeholder="{{ $placeholder; }}" {{ $disabled }}></textarea>
         <input type="submit" value="commenta">
     </form>
 </div>

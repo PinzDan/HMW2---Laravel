@@ -4,9 +4,13 @@
 
 /* +-+-+-+-+-+-+-+-+-+ */
 
-.content {
+.contents {
     z-index: 1;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 .frankie {
@@ -40,11 +44,12 @@
     min-height: 500px;
     padding: 5%;
     margin: 5%;
-
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
     display: flex;
     flex-direction: column;
-    background-color: var(--background-color-3);
-    border-radius: var(--size-rem-3);
+
 }
 
 /* NAV BAR */
@@ -108,8 +113,7 @@
     transition: 0.3s;
 }
 
-#menu-items img {
-    width: 50px;
+#menu-items svg {
     margin: 5px;
 }
 
@@ -172,15 +176,20 @@
 #first-film,
 #second-film {
     display: flex;
-    color: var(--primary-color);
+    color: var(--second-color);
     margin-top: var(--value-2);
     width: 50%;
     transition: 1s;
+    background: rgba(145, 145, 145, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
 
 #first-film:hover,
 #second-film:hover {
     width: 100%;
+    background: none;
 }
 
 #first-film {
@@ -201,7 +210,7 @@
     width: 50%;
     display: flex;
     position: relative;
-    transition: 1s;
+
 }
 
 .left-container {
@@ -216,13 +225,27 @@
     float: right;
 }
 
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.divider img {
+    width: 256px;
+    height: 256px;
+    padding: 10px;
+}
+
 .right-container:hover,
 .left-container:hover {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     flex: 5;
-    background-color: var(--background-color-2);
+    background: rgba(145, 145, 145, 0.1);
     display: flex;
     flex-direction: column;
+    scale: 1.10;
 }
 
 
@@ -230,6 +253,7 @@
     width: 95%;
     transition: 1s;
     padding: 20px;
+    color: var(--primary-color);
 }
 
 /* -++-+-+-+-+-+-+- */
@@ -260,8 +284,12 @@
 
 /* gestione descrizioni */
 
+.description h1 {
+    font-size: 42px;
+}
+
 .description {
-    font-family: var(--default-font);
+    font-family: var(--card-font);
     width: 100%;
     display: block;
     padding: 20px;
@@ -365,14 +393,12 @@
     margin-bottom: 5%;
     margin-left: auto;
     margin-right: auto;
-    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.5);
     border-radius: var(--size-rem-2);
-    background-color: var(--background-color-3);
 }
 
 
 .slideshow {
-    max-width: var(--max-width-standard);
+    max-width: 1366px;
     width: 100%;
     height: auto;
     position: relative;
@@ -394,16 +420,52 @@
 
 .photo img {
     width: 100%;
-    height: 100%;
+    max-height: 700px;
     border-radius: var(--size-rem-2);
 }
 
 .caption {
-    font-size: 32px;
+
+    font-size: 52px;
     border-bottom-right-radius: var(--size-rem-2);
     border-bottom-left-radius: var(--size-rem-2);
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    color: var(--primary-color);
+    font-family: var(--card-font);
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
+
+.back,
+.next {
+
+    transition: 1s;
+}
+
+.back {
+    position: absolute;
+    top: 50%;
+    left: 59px;
+}
+
+.next {
+    position: absolute;
+    top: 50%;
+    right: 42px;
+}
+
+.slideshow:hover .next,
+.slideshow:hover .back {
+    z-index: 1;
+}
+
 
 .dots {
     text-align: center;
@@ -413,8 +475,8 @@
 
 
 .dot {
-    height: 15px;
-    width: 15px;
+    height: 20px;
+    width: 20px;
     margin: 0 2px;
     background-color: #bbb;
     border-radius: 50%;
@@ -450,40 +512,6 @@
 
 
 
-.overlay::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 24px;
-    height: 24px;
-    border-top-left-radius: var(--size-rem-2);
-    color: white;
-
-    background-image: url("../icon/open_in_new_24dp_FILL0_wght400_GRAD0_opsz24.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    padding: var(--size-rem-1);
-    font-family: var(--card-font);
-    transition: 1s;
-    display: block;
-    overflow: auto;
-
-}
-
-.slideshow:hover .overlay::after {
-    background-color: rgba(0, 0, 0, 0.5);
-    background-image: none;
-    width: 100%;
-    height: 70%;
-    font-size: var(--size-rem-1);
-    content: attr(data-element-title) "\A" attr(data-description);
-    /* \A -> carattere nuova riga" */
-    white-space: pre-line;
-}
-
-
-
 
 
 /* FOOTER */
@@ -493,7 +521,7 @@
     height: auto;
     background-color: var(--background-color);
     color: var(--primary-color);
-
+    z-index: 1;
     font-family: var(--default-font);
 
 }
@@ -662,6 +690,14 @@
 
 }
 
+.login-form {
+    margin-bottom: 20px;
+}
+
+.login-form a {
+    color: var(--background-color-3);
+}
+
 
 
 .hidden {
@@ -671,15 +707,10 @@
     top: 0;
 }
 
-.translate_sign {
-    display: none;
-    transition: 1s ease-in-out
-}
-
 .translate_log {
-    display: block;
+    display: block !important;
     transition: 1s ease-in-out;
-
+    text-align: center;
 }
 
 .signup-form label,
@@ -690,6 +721,46 @@
 .eyes {
     cursor: pointer;
 
+}
+
+.signup-form .profile-photo {
+    text-align: center;
+}
+
+
+input#photo-input {
+    opacity: 0;
+    overflow: hidden;
+    margin: 0;
+    width: 0;
+    height: 0;
+}
+
+.profile-photo {
+    position: relative;
+    display: inline-block;
+
+}
+
+.profile-photo>* {
+    cursor: pointer;
+}
+
+
+.profile-photo img {
+    width: 128px;
+    height: 128px;
+    display: block;
+    border-radius: 999px;
+    margin-bottom: var(--size-rem-2);
+    object-fit: cover;
+
+}
+
+.profile-photo svg {
+    position: absolute;
+    right: 9px;
+    top: 32px;
 }
 
 
@@ -736,17 +807,37 @@
 .paragrafo-login {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     color: white;
     font-family: var(--default-font);
     font-size: var(--size-rem-1);
     background-color: var(--background-color);
+    overflow: hidden;
+    width: 100%;
+}
+
+.paragrafo-login img {
+    margin-top: var(--size-rem-5);
 }
 
 .paragrafo-login p {
     margin: 5% 20%;
 }
+
+ol {
+    padding-left: 50px;
+}
+
+#odissey-list li {
+    color: whitesmoke;
+    padding-left: 16px;
+    margin-top: 24px;
+    position: relative;
+    font-size: 16px;
+    line-height: 20px;
+}
+
 
 #google {
     display: flex;

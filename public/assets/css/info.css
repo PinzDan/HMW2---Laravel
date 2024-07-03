@@ -1,0 +1,278 @@
+@import url("root.css");
+
+.content {
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: var(--card-font);
+    color: var(--background-color);
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    background: var(--second-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.info h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.info h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #555;
+    border-bottom: 2px solid #e2e2e2;
+    padding-bottom: 5px;
+}
+
+.info a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.info p,
+.info ul {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.info ul,
+.info ol {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+.info li {
+    margin-bottom: 10px;
+}
+
+
+/* Stile per la sezione cerca */
+
+.sezione-2 {
+    width: 100%;
+}
+
+.sezione-2 h1 {
+    text-align: center;
+    color: var(--second-color);
+    font-family: var(--card-font);
+    margin-top: 10%;
+    font-size: 32px;
+}
+
+.cerca {
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: var(--card-font);
+    padding: 5%;
+}
+
+/* Stile per il titolo principale della sezione cerca */
+.cerca h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: var(--second-color);
+}
+
+/* Stile per il titolo secondario della sezione cerca */
+.cerca h2 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Stile per il sottotitolo della sezione cerca */
+.cerca h3 {
+    font-size: 1em;
+    margin-bottom: 20px;
+    color: #777;
+}
+
+/* Stile per l'input di ricerca */
+.cerca input[type="text"] {
+    width: calc(100% - 100px);
+    /* Pieno con margine */
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    margin: 20px;
+}
+
+/* Stile per l'input di ricerca al focus */
+.cerca input[type="text"]:focus {
+    border-color: #007BFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+.trovato {
+    color: var(--second-color);
+    font-family: var(--card-font);
+    display: flex;
+    padding: 20px;
+}
+
+.main,
+.secondary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.secondary {
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.position {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    background-color: var(--kelly-green);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 1s ease;
+    padding: 20px;
+    position: relative;
+    max-width: 300px;
+}
+
+.appear {
+    display: flex;
+    transition: 1s ease-in-out;
+    transform: translateY(0) scale(1);
+}
+
+.fade-in {
+    animation: fadeIn 2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.position svg {
+    position: absolute;
+    bottom: 100%;
+}
+
+.position span {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    font-family: var(--card-font);
+}
+
+.third {
+    transform: translateY(30px) !important;
+}
+
+.first {
+    transform: translateY(-20px) !important;
+}
+
+.first svg {
+    animation: tilt-animation 1s forwards alternate;
+
+}
+
+
+#aggiungiFilm {
+    background-color: #e74c3c;
+    color: white;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+}
+
+@keyframes tilt-animation {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(40deg);
+    }
+}
+
+
+.second {
+    transform: translateY(10px) !important;
+}
+
+.podio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10%;
+    transition: 1s;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+.avatar img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

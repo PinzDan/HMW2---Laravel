@@ -139,6 +139,12 @@
 
 }
 
+.profile-image {
+    border-radius: 999px;
+    width: 64px;
+    height: 64px;
+}
+
 .user-comment h3 {
     font-size: 16px;
 }

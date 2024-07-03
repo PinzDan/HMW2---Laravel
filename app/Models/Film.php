@@ -9,16 +9,18 @@ class Film extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $table = 'Film';
     protected $fillable = [
         'title',
-        'description',
+        'trama',
         'locandina',
         'trailer',
         'anno_di_rilascio',
         'rating',
         'durata',
-        'genere'
+        'genere',
+        'cast'
     ];
 }
 

@@ -4,7 +4,7 @@ export default function fetchComments() {
     const filmID = urlParams.get('id');
     console.log(filmID);
 
-    fetch(`/get-comments?film_id=${filmID}`)
+    fetch(`api/get-comments?film_id=${filmID}`)
         .then(response => {
 
             if (!response.ok) {
@@ -17,25 +17,29 @@ export default function fetchComments() {
             const comments_container = document.querySelector(".container-commenti");
 
             if (data.length > 0) {
+                const fragment = document.createDocumentFragment();
                 data.forEach(element => {
 
                     const commentDiv = document.createElement('div');
                     commentDiv.className = 'user-comment';
+
+                    const image = document.createElement('img');
+                    image.setAttribute('src', "Images/profiles/" + element.image)
+                    image.className = "profile-image";
+
                     const user = document.createElement('h3');
                     user.textContent = element.username;
+
                     const user_comment = document.createElement("p");
                     user_comment.textContent = element.testo;
+
                     const data = document.createElement('span');
                     data.textContent = element.data_commento;
 
-
-                    commentDiv.appendChild(user);
-                    commentDiv.appendChild(user_comment)
-                    commentDiv.appendChild(data)
-                    comments_container.appendChild(commentDiv);
-
-
+                    commentDiv.append(image, user, user_comment, data);
+                    fragment.appendChild(commentDiv);
                 });
+                comments_container.appendChild(fragment);
             } else {
                 const h1 = document.createElement("h1");
                 h1.textContent = "Nessun commento. ";

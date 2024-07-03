@@ -9,9 +9,11 @@ class Vote extends Model
 {
     use HasFactory;
     protected $table = "Vote";
-    protected $primaryKey = ['filmID', 'utenteID'];
+    protected $primaryKey = 'filmID';
     public $incrementing = false;
     protected $fillable = ["utenteID", "filmID", "rating"];
 
     public $timestamps = false;
+
+
 }

@@ -14,28 +14,46 @@
     </div>
     <div id="menu-items">
         <a href="{{ route('home') }}">
-            <img src="{{ asset('../assets/icon/home_24dp_FILL0_wght400_GRAD0_opsz24.png') }}">
+            <svg width="50px" height="50px">
+                <image href="{{ asset('../assets/icon/home_24dp_FILL0_wght400_GRAD0_opsz24.svg')}}" width="50px"
+                    height="50px"></image>
+            </svg>
             <span>Home</home>
         </a>
+        <a href="{{ route('info') }}">
+            <svg width="50px" height="50px">
+                <image href="{{ asset('assets/icon/info.svg')}}" width="50px" height="50px"></image>
+            </svg>
+            <span>Info</span>
+        </a>
+        <a href="{{ route('archive') }}">
+            <svg width="50px" height="50px">
+                <image href="{{ asset('assets/icon/inventory.svg')}}" width="50px" height="50px"></image>
+            </svg>
+            <span>Archivio</span>
+        </a>
         @if (session()->has('logged'))
+            <a href="{{ route('setting') }}">
+                <svg width="50px" height="50px">
+                    <image href="{{ asset('../assets/icon/manage_accounts_24dp_FILL0_wght400_GRAD0_opsz24.svg')}}"
+                        width="50px" height="50px"></image>
+                </svg>
+                <span>Impostazioni account</span>
+            </a>
             <a href="{{ route('logout') }}">
-                <img src="{{ asset('assets/icon/logout.png') }}">
+                <svg width="50px" height="50px">
+                    <image href="{{ asset('assets/icon/logout.svg')}}" width="50px" height="50px"></image>
+                </svg>
                 <span>Log out</span>
             </a>
         @else
             <a href="{{ route('login') }}">
-                <img src="{{ asset('assets/icon/Profile.png') }}">
+                <svg width="50px" height="50px">
+                    <image href="{{ asset('assets/icon/Profile.png')}}" width="50px" height="50px"></image>
+                </svg>
                 <span>Effettua il login</span>
             </a>
         @endif
-        <a href="Info.php">
-            <img src="{{ asset('assets/icon/info.png')}}">
-            <span>Info</span>
-        </a>
-        <a href="{{ route('archive') }}">
-            <img src="{{ asset('assets/icon/inventory.png') }}">
-            <span>Archivio</span>
-        </a>
 
 
     </div>

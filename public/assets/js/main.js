@@ -1,8 +1,5 @@
 
 
-console.log("main js avviato")
-
-
 const leftContainer = document.querySelector('.left-container')
 const rightContainer = document.querySelector('.right-container')
 const description = document.querySelector('.description')
@@ -11,63 +8,71 @@ const description = document.querySelector('.description')
 
 
 /* apre il container soggetto all'evento */
-function openContainer(element) {
+function toggleContainer(element) {
 
-    /* selezione l'elemento corrente soggetto all'evento */
+
     const container = element.currentTarget
 
-    const trailer = container.querySelector('.trailer') /* seleziono il trailer figlio del container attuale*/
+    const trailer = container.querySelector('.trailer')
 
     container.classList.toggle('description-hover')
     trailer.classList.toggle('show')
 }
 
-/* chiude il container soggetto all'evento */
-function closeContainer(element) {
+leftContainer.addEventListener('mouseenter', toggleContainer)
+leftContainer.addEventListener('mouseleave', toggleContainer)
 
-    /* selezione l'elemento corrente soggetto all'evento */
-    const container = element.currentTarget
-
-    const trailer = container.querySelector('.trailer') /* seleziono il trailer figlio del container attuale*/
-
-    container.classList.remove('description-hover')
-    trailer.classList.remove('show')
-}
-
-leftContainer.addEventListener('mouseenter', openContainer)
-leftContainer.addEventListener('mouseleave', closeContainer)
-
-rightContainer.addEventListener('mouseenter', openContainer)
-rightContainer.addEventListener('mouseleave', closeContainer)
-
-leftContainer.addEventListener('click', openContainer)
-rightContainer.addEventListener('click', openContainer)
+rightContainer.addEventListener('mouseenter', toggleContainer)
+rightContainer.addEventListener('mouseleave', toggleContainer)
 
 
-let slideIndex = 0;
+
+const backClass = document.querySelector(".back");
+const forward = document.querySelector(".next");
+const slides = document.getElementsByClassName("photo");
+const dots = document.getElementsByClassName("dot");
+let slideIndex = 1;
+
+backClass.addEventListener("click", () => {
+    slideIndex--;
+    if (slideIndex < 1) {
+        slideIndex = slides.length;
+    }
+    showSlides();
+});
+
+forward.addEventListener("click", () => {
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+    showSlides();
+});
+
 showSlides();
 
-
-function showSlides() {
-    let i;
-    let slides = document.getElementsByClassName("photo");
-    const dots = document.getElementsByClassName("dot")
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
+function autoslides() {
     slideIndex++;
-
-    for (i = 0; i < dots.length; i++)
-        dots[i].className = dots[i].className.replace("active", "");
-
-    if (slideIndex > slides.length) { slideIndex = 1 }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
-    setTimeout(showSlides, 5000);
-
-
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+    showSlides();
+    slideTimer = setTimeout(autoslides, 5000);
 }
 
+
+autoslides();
+
+function showSlides() {
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active");
+    }
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].classList.add("active");
+}
 
 
 

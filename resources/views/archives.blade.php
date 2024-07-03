@@ -3,7 +3,7 @@
 @section('title', 'Archives')
 
 @section('content')
-<script>var currentPage = 'archive';</script>
+<script>currentPage = 'archive';</script>
 <link rel="stylesheet" href="../assets/css/archivio.css">
 
 
@@ -168,28 +168,28 @@
 
 <div id="archivio-film">
     <h1 id="notfound"> Nessun film del genere selezionato è stato trovato </h1>
-    <div class="film-card-row">
+    <div class="film-card-row show">
         <div class="film-card"></div>
         <div class="film-card"></div>
         <div class="film-card"></div>
         <div class="film-card"></div>
         <div class="film-card"></div>
     </div>
-    <div class="film-card-row">
+    <div class="film-card-row show">
         <div class="film-card"></div>
         <div class="film-card"></div>
         <div class="film-card"></div>
         <div class="film-card"></div>
         <div class="film-card"></div>
     </div>
-    <div class="film-card-row">
+    <div class="film-card-row show">
         <div class="film-card"></div>
         <div class="film-card"></div>
         <div class="film-card"></div>
         <div class="film-card"></div>
         <div class="film-card"></div>
     </div>
-    <div class="film-card-row">
+    <div class="film-card-row show">
         <div class="film-card"></div>
         <div class="film-card"></div>
         <div class="film-card"></div>
@@ -197,13 +197,24 @@
         <div class="film-card"></div>
     </div>
 
-    <div class="next-page">
-        <button id="next" class="archives-button">Next
-            <svg width="24" height="24">
-                <image href="././assets/icon/arrow_forward_24dp_FILL0_wght400_GRAD0_opsz24.svg"></image>
-            </svg>
-        </button>
 
-    </div>
+
+</div>
+<div class="next-page">
+    <button id="next" class="archives-button">Next
+        <svg width="24px" height="24px">
+            <image href="././assets/icon/arrow_forward_24dp_FILL0_wght400_GRAD0_opsz24.svg" width="24px" height="24px">
+            </image>
+        </svg>
+    </button>
+</div>
+<div class="back-page">
+    <button id="back" class="archives-button">
+        <svg width="24" height="24">
+            <image href="./assets/icon/arrow_back_24dp_FILL0_wght400_GRAD0_opsz24.svg" width="24px" height="24px">
+            </image>
+        </svg>
+        Back
+    </button>
 </div>
 @endsection

@@ -12,11 +12,11 @@ function fetchFilm() {
         })
         .then(data => {
             console.log(data);
-            const current_page = window.location.pathname;
             array_movie = data;
 
             switch (currentPage) {
                 case 'home':
+                    updateSlideshow(data);
                     updateHomePage(data);
                     break;
                 case 'archive':
@@ -69,12 +69,37 @@ function updateHomePage(films) {
     }
 }
 
+function updateSlideshow(films) {
+    const photo_div = document.querySelectorAll(".photo");
+    rand = Math.floor(Math.random() * (films.length - 6));
+
+
+    photo_div.forEach(element => {
+        console.log(rand)
+        let params = new URLSearchParams(films[rand]);
+        element.querySelector(".caption").textContent = films[rand].title
+        element.querySelector("img").src = films[rand++].slideshow;
+        element.querySelector("a").setAttribute("href", `/selected?${params.toString()}`)
+    })
+}
+
+
+
+
+
 /* archives */
+let i = 0;
 function updateArchive(films) {
+
     let deleted = [];
     let rand = -1;
     const film_scroll = document.querySelector('.film-scroll')
     const film_card = film_scroll.querySelectorAll('.film-card');
+    const nextpage = document.getElementById("next");
+    const backpage = document.getElementById("back");
+
+    const archive = document.getElementById("archivio-film")
+
     film_card.forEach(element => {
 
         do {
@@ -99,17 +124,160 @@ function updateArchive(films) {
 
     })
 
+    /* archivio */
+
     const film_card_row = document.querySelectorAll(".film-card-row");
-    let i = 0;
     film_card_row.forEach(element => {
         let film_card = element.querySelectorAll('.film-card');
+
         film_card.forEach(element => {
-            const img = document.createElement("img");
-            img.src = films[i++].locandina;
-            element.appendChild(img);
-        })
+
+            if (i < films.length) {
+                element.setAttribute('data-index', films[i].id);
+                let a = createFilmCard(i, films);
+                element.appendChild(a);
+                i++;
+            }
+        });
+    });
+    createHiddenCard()
+
+
+
+
+    function createHiddenCard() {
+        let j = 0;
+        let row = createRow();
+
+        archive.appendChild(row);
+        while (i < films.length) {
+            if (j === 5) {
+                j = 0;
+                row = createRow();
+
+                archive.appendChild(row);
+
+            }
+            id = films[i].id;
+            const newfilm = createFilmCard(i++, films);
+            const newCard = document.createElement("div");
+            newCard.className = "film-card";
+
+            newCard.setAttribute("data-index", id);
+
+            newCard.appendChild(newfilm);
+
+            row.appendChild(newCard);
+
+            j++;
+        }
+    }
+
+    nextpage.addEventListener("click", () => {
+        changeCard(true)
+        backpage.style.display = "flex"
     })
+    backpage.addEventListener("click", () => {
+        changeCard();
+
+    })
+
 }
+
+
+function changeCard(isNext = false) {
+    const row = document.querySelectorAll(".film-card-row")
+    isNext ? next(row) : back(row);
+}
+
+function next(row) {
+
+    let lastShow = 0;
+    let nrow = 4
+    let count = 0;
+    row.forEach((element, index) => {
+
+
+        if (element.classList.contains("obscure") && lastShow >= nrow) {
+            if (count < nrow) {
+                console.log(lastShow)
+                element.classList.replace("obscure", "show");
+                count++;
+            }
+        }
+
+
+        else {
+            element.classList.replace("show", "obscure");
+            lastShow++
+        }
+
+
+    })
+
+}
+
+function back(row) {
+    let indice = -1;
+    for (let index = 0; index < row.length; index++) {
+        const element = row[index];
+        if (element.classList.contains("show")) {
+            indice = index;
+            break;
+        }
+    }
+
+    const estremoSinistro = indice - 4;
+    let estremoDestro = indice + 4;
+
+    for (let index = estremoSinistro; index <= estremoDestro; index++) {
+        if (index >= 0 && index < row.length) {
+            if (index < estremoSinistro + 4) {
+                row[index].classList.replace("obscure", "show");
+            } else {
+                row[index].classList.replace("show", "obscure");
+            }
+        }
+    }
+
+    /* versione vecchia */
+    // row.forEach((element, index) => {
+    //     if (index >= estremoSinistro && index < estremoDestro)
+    //         element.classList.replace("obscure", "show");
+    //     else //if (index >= indice - 4)
+    //         element.classList.replace("show", "obscure");
+    // })
+
+}
+
+
+
+
+function createFilmCard(index, films) {
+    const a = document.createElement('a');
+    let params = new URLSearchParams(films[index]);
+    a.setAttribute("href", `/selected?${params.toString()}`);
+
+
+    const img = document.createElement("img");
+    img.src = films[index].locandina;
+    img.alt = films[index].title;
+
+    a.appendChild(img);
+
+    return a;
+}
+
+
+function createRow() {
+    const newrow = document.createElement("div");
+    newrow.className = "film-card-row obscure";
+
+    return newrow;
+}
+
+/* +-+-+-+-+-+- */
+
 
 
 
@@ -127,27 +295,45 @@ function setupFilter() {
 
             year.addEventListener("click", () => {
                 array_movie.sort((a, b) => a.anno_di_rilascio - b.anno_di_rilascio);
-                updateArchiveByValue(array_movie);
+                sortCard()
             })
 
             rating.addEventListener("click", () => {
                 array_movie.sort((a, b) => {
                     if (a.rating === b.rating) {
-                        a.title - b.title
+                        return a.title.localeCompare(b.title);
                     }
                     else {
-                        a.rating - b.rating
+                        return b.rating - a.rating
                     }
                 });
-                updateArchiveByValue(array_movie);
+                sortCard()
             })
             durata.addEventListener("click", () => {
                 array_movie.sort((a, b) => a.durata - b.durata);
-                updateArchiveByValue(array_movie);
+                sortCard()
             })
 
         });
     }
+}
+
+function sortCard() {
+    const cards = document.querySelectorAll(".film-card-row >.film-card");
+
+    console.log(array_movie)
+    cards.forEach((element, index) => {
+        if (index < array_movie.length) {
+            element.setAttribute('data-index', array_movie[index].id);
+            const a = element.querySelector("a")
+            let params = new URLSearchParams(array_movie[index]);
+            a.setAttribute("href", `/selected?${params.toString()}`);
+
+
+            element.querySelector("img").src = array_movie[index].locandina;
+        } else
+            return "errore"
+    })
 }
 
 
@@ -172,40 +358,42 @@ function updateGenere() {
     const checkboxes = menu_genere.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener("change", () => {
+
             const selected = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value.toLowerCase());
 
             const new_movie_array = array_movie.filter(movie => selected.includes(movie.genere.toLowerCase()));
 
-            if (new_movie_array.length > 0)
+            if (new_movie_array.length > 0 && selected.length > 0) {
                 updateArchiveByValue(new_movie_array);
-            else {
-                updateArchiveByValue(array_movie)
+            }
+            else if (selected.length > 0 && new_movie_array < 0) {
                 const h1 = document.getElementById("notfound");
                 h1.style.display = "block";
-            }
 
+            }
+            else {
+                updateArchiveByValue(array_movie)
+            }
         })
+
     })
+
 }
 
 
 function updateArchiveByValue(array) {
     console.log("città2");
     const cards = document.querySelectorAll(".film-card-row > .film-card");
-    let i = 0;
-
-
-    cards.forEach((element) => { // Aggiunta la funzione di callback correttamente
-        if (i < array.length) {
-            if (element.style.display === "none")
-                element.style.display = "block";
-
-            let img = element.querySelector("img");
-            img.src = array[i++].locandina;
-        }
-        else {
+    console.log(array)
+    cards.forEach(element => {
+        const dataIndex = element.getAttribute("data-index");
+        const found = array.find(item => item.id.toString() === dataIndex);
+        if (found) {
+            element.style.display = "flex";
+        } else {
             element.style.display = "none";
         }
+
     });
 }
 

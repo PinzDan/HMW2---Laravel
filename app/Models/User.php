@@ -21,13 +21,18 @@ class User extends Authenticatable
     public $timestamps = false;
     protected $table = "utente";
     protected $fillable = [
-        'id',
         'username',
         'email',
         'password',
         'google_id',
+        'image',
         'created_at',
 
+    ];
+
+    protected $guarded = [
+        'id',
+        'confirmation_code'
     ];
 
     /**
@@ -37,7 +42,5 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
-
 }

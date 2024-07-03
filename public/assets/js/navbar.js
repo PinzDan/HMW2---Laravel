@@ -6,7 +6,6 @@ const logo = document.getElementById('logo')
 
 
 
-
 function dropdown() {
     console.log("dropdown")
 
@@ -16,12 +15,14 @@ function dropdown() {
     logo.classList.toggle('show')
 
 
+
 }
 menu_button.addEventListener('mouseenter', dropdown)
 
 window.onclick = function (event) {
-    if (!event.target.matches('#menu-button')) { // Verifica se l'elemento è button-menu
-        menu_button.classList.remove('show')
+    if (!event.target.matches('#menu-items')) { // Verifica se l'elemento è button-menu
+        if (image_button.classList.contains("clicked-button"))
+            dropdown()
 
     }
 }

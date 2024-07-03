@@ -2,11 +2,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
+use App\Models\Activity;
+use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
+
+
 
 class GoogleController extends Controller
 {
@@ -22,21 +24,39 @@ class GoogleController extends Controller
 
             $existingUser = User::where('email', $user->email)->first();
 
+            $activities = [];
+            Activity::fillArray(4, $activities);
+            Session::put('activities', $activities);
+            /* gestione activity */
+            // Primo elemento: login effettuato
+
+            $description = 'login';
+            $details = 'Login effettuato con Google ' . Carbon::now()->toDateTimeString();
+            Activity::addActivity($description, $details);
+
+
+
             if ($existingUser) {
-                Auth::login($existingUser);
+
+                session(['user_id' => $existingUser->id]);
 
             } else {
+
+
                 $newUser = User::create([
                     'username' => $user->name,
                     'email' => $user->email,
                     'password' => encrypt('my-google'),
                     'google_id' => $user->id,
+                    'image' => "Profile.png",
                     'created_at' => now(),
                 ]);
 
-                Auth::login($newUser);
+
+                session(['user_id' => $newUser->id]);
+
             }
-            session(['user_id' => $existingUser->id]);
+
             /**session(['google_id' => $user->id]);
             session(['google_loggedin' => true]);*/
             session(['logged' => true]);
